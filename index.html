@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddharth Jain | Data Scientist & Analyst</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #020408;
+            --glass-bg: rgba(20, 20, 30, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-cyan: #22d3ee;
+            --accent-purple: #a855f7;
+            --accent-green: #10b981;
+            --gradient-line: linear-gradient(90deg, #22d3ee 0%, #a855f7 100%);
+            --name-gradient: linear-gradient(to right, #c084fc, #22d3ee); 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar { height: 8px; width: 8px; }
+        ::-webkit-scrollbar-track { background: #020408; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 100% 0%, hsla(250, 60%, 15%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 0% 0%, hsla(190, 80%, 15%, 0.5) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, hsla(280, 70%, 10%, 0.4) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(220, 70%, 5%, 0.3) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1 { font-family: 'Cinzel Decorative', serif; }
+        h2, h3, .theme-header, .stat-huge, .year-marker, .wip-header, .problem-label { font-family: 'Space Grotesk', sans-serif; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        /* HERO */
+        header { padding: 80px 0 60px; text-align: center; animation: fadeIn 1s ease-out; }
+        
+        h1 {
+            font-size: 5rem;
+            font-weight: 700; 
+            line-height: 1.1; 
+            margin-bottom: 20px;
+            background: var(--name-gradient);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .role-title {
+            font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--accent-cyan);
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: inline-block;
+            border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 50px;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(5px);
+        }
+
+        .intro { 
+            font-family: 'Montserrat', sans-serif; font-size: 1.25rem; line-height: 1.7;
+            color: var(--text-secondary); max-width: 800px; margin: 0 auto; font-weight: 300; 
+        }
+
+        .text-highlight { color: var(--accent-cyan); font-weight: 500; }
+
+        /* === CURRENTLY WORKING SECTION === */
+        .current-work-container {
+            margin: 40px auto 80px;
+            max-width: 800px;
+            background: rgba(16, 185, 129, 0.03);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.2s ease-out;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.05);
+        }
+
+        .current-work-container::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
+            background: var(--accent-green);
+        }
+
+        .wip-header-row {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 15px;
+        }
+
+        .status-dot {
+            width: 10px; height: 10px; background-color: var(--accent-green);
+            border-radius: 50%; box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        .wip-tag {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent-green); font-weight: 700; font-family: 'Space Grotesk';
+        }
+
+        .wip-title {
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: #fff; 
+            margin-bottom: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .wip-text {
+            font-size: 1.1rem; color: #cbd5e1; line-height: 1.6; font-weight: 300;
+            border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;
+        }
+        
+        /* SECTION HEADERS */
+        .section-header {
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-secondary);
+            margin: 60px 0 40px; display: flex; align-items: center; gap: 15px; font-family: 'Space Grotesk';
+        }
+        .section-header::after { content: ''; height: 1px; flex-grow: 1; background: linear-gradient(90deg, var(--glass-border), transparent); }
+
+        /* === TIMELINE === */
+        .timeline-wrapper {
+            position: relative; padding: 40px 0; overflow-x: auto; overflow-y: hidden;
+            white-space: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 60px;
+        }
+        .timeline-axis {
+            position: absolute; top: 55px; left: 0; width: 2000px; height: 2px;
+            background: var(--gradient-line); opacity: 0.5; z-index: 0;
+        }
+        .timeline-item {
+            display: inline-block; width: 350px; vertical-align: top; white-space: normal;
+            margin-right: 50px; position: relative; padding-top: 50px;
+        }
+        .year-marker {
+            position: absolute; top: 0; left: 20px; background: var(--bg-color);
+            border: 2px solid var(--accent-cyan); color: var(--accent-cyan);
+            padding: 5px 15px; border-radius: 20px; font-weight: 700; z-index: 2;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+        .node-content {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 25px;
+            border-radius: 16px; backdrop-filter: blur(15px); min-height: 420px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+        .node-content:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.3); }
+
+        .theme-header { font-size: 1.3rem; color: #fff; margin-bottom: 5px; }
+        .job-location { font-size: 0.85rem; color: var(--accent-purple); font-family: monospace; margin-bottom: 15px; display: block; }
+        .description { font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 15px; }
+        
+        .tech-pill {
+            font-size: 0.7rem; background: rgba(255,255,255,0.05); padding: 4px 10px;
+            border-radius: 4px; color: #aaa; border: 1px solid rgba(255,255,255,0.1);
+            display: inline-block; margin-right: 4px; margin-top: 8px; font-family: 'Space Grotesk';
+        }
+        .highlight-mini {
+            background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px;
+            border-left: 2px solid var(--accent-cyan); margin-top: 10px;
+        }
+        .highlight-mini h4 { color: #fff; font-size: 0.8rem; margin-bottom: 4px; }
+        .highlight-mini p { color: #94A3B8; font-size: 0.8rem; }
+
+        /* === BENTO GRID === */
+        .bento { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 30px;
+            border-radius: 16px; backdrop-filter: blur(15px); transition: all 0.3s ease;
+        }
+        .card:hover { transform: translateY(-7px); border-color: var(--accent-cyan); box-shadow: 0 20px 40px -20px rgba(34, 211, 238, 0.2); }
+        .card-tag { font-size: 0.75rem; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 700; font-family: 'Space Grotesk';}
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; color: #fff; }
+        .stat-huge { font-size: 2.5rem; font-weight: 700; color: #fff; margin: 20px 0; }
+        .stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 400; margin-left: 5px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            h1 { font-size: 3rem; }
+            .timeline-wrapper { white-space: normal; overflow: visible; padding-bottom: 0; }
+            .timeline-axis { width: 2px; height: 100%; top: 0; left: 20px; }
+            .timeline-item { display: block; width: 100%; margin-bottom: 50px; padding-top: 0; padding-left: 50px; }
+            .year-marker { position: relative; left: -65px; top: 0; display: inline-block; margin-bottom: 10px; }
+            .node-content { min-height: auto; }
+            .wip-text { font-size: 1rem; }
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { opacity: 1; box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        /* FOOTER & LINKS */
+        footer { margin-top: 80px; padding: 50px 0; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+        
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-btn {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+        }
+
+        .social-btn:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.4);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="role-title">Senior Data Analyst & Data Scientist</div>
+            <h1>Siddharth Jain</h1>
+            <p class="intro">
+                Specializing in <span class="text-highlight">Advanced Analytics</span>, 
+                <span class="text-highlight">Machine Learning</span>, and 
+                <span class="text-highlight">Generative AI</span>.
+                <br>
+                Building the models that drive executive decision-making.
+            </p>
+        </header>
+
+        <div class="current-work-container">
+            <div class="wip-header-row">
+                <div class="status-dot"></div>
+                <div class="wip-tag">Self-Directed Initiative</div>
+            </div>
+            <div class="wip-title">Stale Claim Logic Engine</div>
+            <p class="wip-text">
+                "A significant number of claims have been open for an extended period with no recent activity. Ideally, these files should be closed, but they currently remain open due to lack of visibility."
+            </p>
+        </div>
+
+        <div class="section-header">The Evolution (Scroll &rarr;)</div>
+        
+        <div class="timeline-wrapper">
+            <div class="timeline-axis"></div>
+
+            <div class="timeline-item">
+                <div class="year-marker">Dec 2023</div>
+                <div class="node-content">
+                    <div class="theme-header">Applied AI & Analytics</div>
+                    <span class="job-location">Chubb | Miami, FL</span>
+                    <p class="description">
+                        Driving value through the intersection of BI and ML. Automating decision workflows and uncovering hidden risks.
+                    </p>
+                    <div class="highlight-mini">
+                        <h4>Strategic Analytics</h4>
+                        <p>Redesigned Qlik Sense dashboards with Star Schema logic. Reduced reporting time by 20% via SQL Views.</p>
+                    </div>
+                    <div class="highlight-mini" style="border-left-color: var(--accent-purple);">
+                        <h4>Applied AI (NLP)</h4>
+                        <p>Scanned 50k+ unstructured claim notes to flag severity patterns automatically.</p>
+                    </div>
+                    <div style="margin-top:15px;">
+                        <span class="tech-pill">Qlik Sense</span>
+                        <span class="tech-pill">NLP</span>
+                        <span class="tech-pill">GenAI</span>
+                        <span class="tech-pill">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year-marker">2021 - 2023</div>
+                <div class="node-content">
+                    <div class="theme-header">Engineering Mgmt</div>
+                    <span class="job-location">St. Cloud State University</span>
+                    <p class="description">
+                        Relocated to the US to formalize technical leadership. Applied Power BI to solve enrollment logistics for the Dean's office.
+                    </p>
+                    <div class="highlight-mini">
+                        <h4>Research Assistant</h4>
+                        <p>Built dashboards to track application pipeline velocity and enrollment trends.</p>
+                    </div>
+                    <div style="margin-top:15px;">
+                        <span class="tech-pill">Power BI</span>
+                        <span class="tech-pill">Data Governance</span>
+                        <span class="tech-pill">Research</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year-marker">2018 - 2020</div>
+                <div class="node-content">
+                    <div class="theme-header">Predictive Modeling</div>
+                    <span class="job-location">Alliant Infotech | India</span>
+                    <p class="description">
+                        My formative years in strict Data Science. Moving from descriptive analytics to predictive modeling.
+                    </p>
+                    <div class="highlight-mini" style="border-left-color: var(--accent-purple);">
+                        <h4>Forecasting (ARIMA)</h4>
+                        <p>Modeled loan delinquency rates to improve financial planning accuracy.</p>
+                    </div>
+                    <div class="highlight-mini" style="border-left-color: var(--accent-purple);">
+                        <h4>Classification (XGBoost)</h4>
+                        <p>Identified key drivers of customer churn via Random Forest.</p>
+                    </div>
+                    <div style="margin-top:15px;">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Tableau</span>
+                        <span class="tech-pill">Scikit-Learn</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year-marker">2014 - 2018</div>
+                <div class="node-content">
+                    <div class="theme-header">CS Roots</div>
+                    <span class="job-location">Bachelor of Engineering</span>
+                    <p class="description">
+                        Built the structural understanding of Algorithms, Database Management Systems (DBMS), and Object-Oriented Programming.
+                    </p>
+                    <div class="highlight-mini">
+                        <h4>Core Focus</h4>
+                        <p>Data Structures, SQL Logic, and Computational Thinking.</p>
+                    </div>
+                    <div style="margin-top:15px;">
+                        <span class="tech-pill">C++</span>
+                        <span class="tech-pill">Java</span>
+                        <span class="tech-pill">DBMS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="year-marker">2012</div>
+                <div class="node-content" style="border-color: var(--accent-cyan);">
+                    <div class="theme-header">The Origin Story</div>
+                    <span class="job-location">The Spark</span>
+                    <p class="description">
+                        <strong>"Can I make this easier?"</strong><br>
+                        It started at my dad's small business. He was drowning in handwritten inventory logs.
+                    </p>
+                    <p class="description">
+                        I built a system in Excel to track stock automatically. That moment—seeing data solve a human problem—is why I do this today.
+                    </p>
+                    <div style="margin-top:15px;">
+                        <span class="tech-pill">Curiosity</span>
+                        <span class="tech-pill">Excel</span>
+                        <span class="tech-pill">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="section-header">Technical Blueprints (Selected Work)</div>
+        <div class="bento">
+            
+            <div class="card">
+                <div class="card-tag">GenAI & RAG Architecture</div>
+                <h3>Private Doc Intelligence</h3>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 20px;">
+                    <strong>Problem:</strong> Need to query sensitive legal docs without cloud exposure.<br>
+                    <strong>Solution:</strong> Architected a local RAG system using <strong>Llama 3</strong> and <strong>ChromaDB</strong>.
+                </p>
+                <div class="stat-huge">100% <span class="stat-label">Accuracy on Dates</span></div>
+                <span class="tech-pill">Llama 3</span>
+                <span class="tech-pill">ChromaDB</span>
+                <span class="tech-pill">Local LLM</span>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">Anomaly Detection</div>
+                <h3>Fraud Risk Scoring</h3>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 20px;">
+                    <strong>Problem:</strong> Random sampling missed complex fraud.<br>
+                    <strong>Solution:</strong> Engineered a hybrid score using <strong>Isolation Forest</strong> and validated via <strong>XGBoost</strong>.
+                </p>
+                <div class="stat-huge">$2M+ <span class="stat-label">Risk Identified</span></div>
+                <span class="tech-pill">Isolation Forest</span>
+                <span class="tech-pill">K-Means</span>
+                <span class="tech-pill">Python</span>
+            </div>
+
+             <div class="card">
+                <div class="card-tag">Predictive Modeling</div>
+                <h3>Claims Severity Prediction</h3>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 20px;">
+                    <strong>Problem:</strong> Benchmarks were under-reserving complex liability claims.<br>
+                    <strong>Solution:</strong> Developed a Regression Model to predict Ultimate Loss with higher precision.
+                </p>
+                <div class="stat-huge">15% <span class="stat-label">Accuracy Boost</span></div>
+                <span class="tech-pill">Regression</span>
+                <span class="tech-pill">Scikit-Learn</span>
+                <span class="tech-pill">Reserve Analysis</span>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Siddharth Jain &copy; 2026</p>
+            <p style="opacity: 0.5;">Built with Code, Logic, and Precision.</p>
+            
+            <div class="social-links">
+                <a href="mailto:jsiddharth0825@outlook.com" class="social-btn" title="Email Me">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com/in/siddharth3008/" class="social-btn" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
